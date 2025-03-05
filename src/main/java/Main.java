@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
-=======
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties; // JsonIgnoreProperties 추가
->>>>>>> f43211d (Object Mapper)
 
 import java.io.IOException;
 import java.net.URI;
@@ -24,7 +18,6 @@ public class Main {
         int pokemonId = rand.nextInt(1, 152);
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUrl.formatted(pokemonId))).GET().build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-<<<<<<< HEAD
 //        System.out.println(response.body());
         ObjectMapper mapper = new ObjectMapper();
         Pokemon pokemon = mapper.readValue(response.body(),Pokemon.class);
@@ -43,27 +36,3 @@ class Pokemon {
 
     public Sprites sprites;
 }
-
-=======
-
-        ObjectMapper mapper = new ObjectMapper();
-        Pokemon pokemon = mapper.readValue(response.body(), Pokemon.class);
-        if (pokemon.sprites != null && pokemon.sprites.frontDefault != null) {
-            System.out.println(pokemon.sprites.frontDefault);
-        } else {
-            System.out.println("포켓몬 이미지를 찾을 수 없습니다. (ID: " + pokemonId + ")");
-        }
-    }
-}
-
-@JsonIgnoreProperties(ignoreUnknown = true) // 추가
-class Pokemon {
-    @JsonIgnoreProperties(ignoreUnknown = true) // 추가
-    public static class Sprites {
-        @JsonProperty("front_default")
-        public String frontDefault;
-    }
-
-    public Sprites sprites;
-}
->>>>>>> f43211d (Object Mapper)
