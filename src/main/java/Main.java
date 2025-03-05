@@ -7,11 +7,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-<<<<<<< HEAD
-import java.util.Objects;
-=======
 import java.util.List;
->>>>>>> 80e9590 (끗)
 import java.util.Random;
 
 public class Main {
@@ -24,12 +20,6 @@ public class Main {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 //        System.out.println(response.body());
         ObjectMapper mapper = new ObjectMapper();
-<<<<<<< HEAD
-        Pokemon pokemon = mapper.readValue(response.body(),Pokemon.class);
-        System.out.println(pokemon.sprites.frontDefault);
-
-=======
-//        System.out.println(response.body());
         Pokemon pokemon = mapper.readValue(response.body(), Pokemon.class);
         System.out.println(pokemon.sprites.frontDefault);
 
@@ -46,7 +36,6 @@ public class Main {
                 .filter(el -> el.language.name.equals("ko"))
                 .map(el -> el.name)
                 .findFirst().orElseThrow());
->>>>>>> 80e9590 (끗)
     }
 }
 
@@ -56,12 +45,6 @@ class Pokemon {
     public static class Sprites {
         @JsonProperty("front_default")
         public String frontDefault;
-<<<<<<< HEAD
-    };
-
-    public Sprites sprites;
-}
-=======
     }
     public Sprites sprites;
 }
@@ -79,4 +62,4 @@ class PokemonSpecies {
     }
     public List<Name> names;
 }
->>>>>>> 80e9590 (끗)
+
